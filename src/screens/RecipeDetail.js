@@ -40,7 +40,7 @@ const RecipeDetail = () => {
   return (
     <Container className="mt-5 pt-5" style={{minHeight:"42.8rem"}}>
       {recipe && (
-        <Row>
+        <Row className='mt-5'>
           <Col md={8} >
             <h4 className="d-flex align-items-center">
              <Link to="/" style={{marginRight:"1rem"}} >
