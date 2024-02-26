@@ -25,9 +25,9 @@ const RecipeDetail = () => {
     fetchRecipe();
   }, [id]);
 
-  const [fav,setFav] = useState(favorites.some((favRecipe) => favRecipe.id === recipe.id));
+  const [fav,setFav] = useState(favorites.some((favRecipe) => favRecipe.id === id));
   const toggleFavorite = (recipe) => {
-        if (favorites.some((favRecipe) => favRecipe.id === recipe.id)) {
+        if (favorites.some((favRecipe) => favRecipe.id === id)) {
           setFav(false)
           console.log("fav is set false")
           dispatch(removeFromFavorites(recipe));
@@ -38,7 +38,7 @@ const RecipeDetail = () => {
       };
 
   return (
-    <Container className="mt-4" style={{minHeight:"38.8rem"}}>
+    <Container className="mt-5 pt-5" style={{minHeight:"38.8rem"}}>
       {recipe && (
         <Row>
           <Col md={8} >
