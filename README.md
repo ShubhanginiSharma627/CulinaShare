@@ -32,7 +32,7 @@ Make sure you have the following software installed on your machine:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/CulinaShare.git
+   git clone https://github.com/shubhh015/CulinaShare.git
    ```
 
 2. Change to the project directory:
