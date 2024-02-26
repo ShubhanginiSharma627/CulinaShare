@@ -38,7 +38,7 @@ const RecipeDetail = () => {
       };
 
   return (
-    <Container className="mt-5 pt-5" style={{minHeight:"38.8rem"}}>
+    <Container className="mt-5 pt-5" style={{minHeight:"42.8rem"}}>
       {recipe && (
         <Row>
           <Col md={8} >
