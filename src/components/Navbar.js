@@ -23,7 +23,7 @@ const NavigationBar = () => {
         <p style={{color:"#E07A5F",fontFamily: 'Pacifico, sans-serif',fontSize:"1.8rem",marginTop:"1rem"}}>CulinaShare</p>
         </div>
       </LinkContainer>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Toggle aria-controls="basic-navbar-nav" style={{ backgroundColor: theme === 'dark' ? "white" : "#f8f9fa" }}/>
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className=" d-flex justify-content-end" style={{width:"100%"}}>
           <LinkContainer to="/" style={{color:"white"}}>
