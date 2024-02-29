@@ -10,7 +10,6 @@ CulinaShare is a web application that allows users to contribute and share their
 - [Usage](#usage)
 - [Themes](#themes)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
