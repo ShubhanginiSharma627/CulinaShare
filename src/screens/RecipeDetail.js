@@ -4,8 +4,10 @@ import { Container, Row, Col, Card, ListGroup } from 'react-bootstrap';
 import { FaHeart, FaRegHeart,FaArrowLeft } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToFavorites, removeFromFavorites } from '../redux/actions/favoritesActions';
+import { useTheme } from '../ThemeContext';
 
 const RecipeDetail = () => {
+  const {  theme } = useTheme();
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
   const dispatch = useDispatch();
@@ -27,12 +29,12 @@ const RecipeDetail = () => {
 
   const [fav,setFav] = useState(favorites.some((favRecipe) => favRecipe.id === id));
   const toggleFavorite = (recipe) => {
+      setFav(!fav);
         if (favorites.some((favRecipe) => favRecipe.id === id)) {
-          setFav(false)
-          console.log("fav is set false")
-          dispatch(removeFromFavorites(recipe));
+         
+          //console.log("fav is set false")
+          dispatch(removeFromFavorites(id));
         } else {
-           setFav(true)
           dispatch(addToFavorites(recipe));
         }
       };
@@ -42,9 +44,9 @@ const RecipeDetail = () => {
       {recipe && (
         <Row className='mt-5'>
           <Col md={8} >
-            <h4 className="d-flex align-items-center">
+            <h4 className="d-flex align-items-center" style={{color:theme == "dark" ? "#3D9970"  :'#3D405B'}}>
              <Link to="/" style={{marginRight:"1rem"}} >
-                <FaArrowLeft color='#3D405B'/>
+                <FaArrowLeft color={theme == "dark" ? "#3D9970"  :'#3D405B'}/>
               </Link>
               {recipe.title} by {recipe.publisher}
               <button
@@ -56,8 +58,8 @@ const RecipeDetail = () => {
               </button>
             </h4>
             <img src={recipe.image_url} alt={recipe.title} className="img-fluid rounded mx-5" style={{border:"1px solid #3D405B",height: '500px', objectFit: 'cover'}}/>
-            <p className="mt-3">{` Cooking Time - ${recipe.cooking_time} minutes`}</p>
-            <p>Source URL: {recipe.source_url}</p>
+            <p className="mt-3" style={{color:theme == "dark" ? "#FF6F61":"#333"}}>{` Cooking Time - ${recipe.cooking_time} minutes`}</p>
+            <p  style={{color:theme == "dark" ? "#FF6F61":"#333"}}>Source URL: {recipe.source_url}</p>
           </Col>
           <Col md={4}>
             <Card>

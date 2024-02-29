@@ -8,11 +8,13 @@ import AboutUs from './screens/AboutUs';
 import NavigationBar from './components/Navbar';
 import { Provider } from 'react-redux';
 import store from './redux/store/store';
+import {  useTheme } from './ThemeContext';
 function App() {
+  const {  theme } = useTheme();
   return (
     <Provider store={store}>
     <Router>
-      <div className="App" style={{backgroundColor: "#F4EAD3"}}>
+      <div className="App" style={{backgroundColor: theme == "dark" ? "#001F3F" : "#F4EAD3"}}>
         <NavigationBar />
         <Routes >
           <Route path="/" element={<Home />} />

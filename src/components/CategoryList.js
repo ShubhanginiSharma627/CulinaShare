@@ -8,7 +8,7 @@ const CategoryList = ({ category, handleCategoryClick,cat }) => {
         <Button
           key={category}
           className="mb-2 mx-3 "
-           style={{border:"none",backgroundColor:cat==category && clickState?"#DAA588":"ButtonFace",color:cat==category && clickState?"white":"GrayText",borderRadius:50,fontFamily: 'Quicksand, sans-serif'}}
+           style={{border:"none",backgroundColor:cat==category && clickState?"#DAA588":"ButtonFace",color:cat==category && clickState?"white":"#3D9970",borderRadius:50,fontFamily: 'Quicksand, sans-serif'}}
           onClick={() => {
             handleCategoryClick(category,!clickState);
             setClickState(!clickState);

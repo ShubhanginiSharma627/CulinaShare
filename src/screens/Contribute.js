@@ -3,6 +3,7 @@ import { Container, Row, Col, Form, Button, Toast, ToastContainer } from 'react-
 import { FaTrash, FaPlus } from 'react-icons/fa';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
+import { useTheme } from '../ThemeContext';
 const Contribute = () => {
   const [recipeData, setRecipeData] = useState({
     title: "",
@@ -22,7 +23,7 @@ const Contribute = () => {
     newIngredients[index][key] = value;
     setRecipeData({ ...recipeData, ingredients: newIngredients });
   };
-
+  const {  theme } = useTheme();
   const handleAddIngredient = () => {
     setRecipeData({
       ...recipeData,
@@ -56,7 +57,7 @@ const Contribute = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("recipedata", recipeData)
+   // console.log("recipedata", recipeData)
     const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
     let submit = true
     if(recipeData.title.length <= 3) {
@@ -84,7 +85,7 @@ const Contribute = () => {
 
         if (response.ok) {
           // Optionally, you can redirect the user to another page or show a success message
-          console.log('Recipe data submitted successfully:', recipeData);
+          //console.log('Recipe data submitted successfully:', recipeData);
           setShowToast(true);
           setRecipeData({
             title: "",
@@ -125,11 +126,11 @@ const Contribute = () => {
   return (
     <Container className="mt-5 pt-5">
       <Row>
-        <Col md={8} className="mx-auto mb-3 mt-5  p-4 rounded" style={{ backgroundColor: '#DAA588' }}>
-          <h1 style={{ color: 'white', fontFamily: 'Quicksand, sans-serif' }}>Contribute Your Recipe</h1>
+        <Col md={8} className="mx-auto mb-3 mt-5  p-4 rounded" style={{ backgroundColor: theme === 'dark' ? '#1F2937' : '#DAA588' }}>
+          <h1 style={{ color: theme == "dark" ? "#E07A5F":"white", fontFamily: 'Quicksand, sans-serif' }}>Contribute Your Recipe</h1>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="title" className="my-2">
-              <Form.Label style={{ color: 'white', fontFamily: 'Quicksand, sans-serif', fontWeight: "600" }}>Recipe Title</Form.Label>
+              <Form.Label style={{ color: theme == "dark" ? "#FFD700":"white", fontFamily: 'Quicksand, sans-serif', fontWeight: "600" }}>Recipe Title</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter the title of your recipe"
@@ -145,7 +146,7 @@ const Contribute = () => {
               )}
             </Form.Group>
             <Form.Group controlId="ingredients" className="my-2">
-              <Form.Label style={{ color: 'white', fontFamily: 'Quicksand, sans-serif', fontWeight: "600" }}>Ingredients</Form.Label>
+              <Form.Label style={{ color: theme == "dark" ? "#FFD700":"white", fontFamily: 'Quicksand, sans-serif', fontWeight: "600" }}>Ingredients</Form.Label>
               {recipeData.ingredients.map((ingredient, index) => (
                 <div key={index} className="d-flex my-2">
                   <Form.Control
@@ -178,7 +179,7 @@ const Contribute = () => {
                         <Button
                           variant="danger"
                           className="mx-2"
-                          style={{ backgroundColor: "#DAA588", border: "none" }}
+                          style={{ backgroundColor: "#0000", border: "none" }}
                           onClick={() => handleRemoveIngredient(index)}
                         >
                           <FaTrash size={20} color="red" />
@@ -203,7 +204,7 @@ const Contribute = () => {
               </OverlayTrigger>
             </Form.Group>
             <Form.Group controlId="instructions" className="my-2">
-              <Form.Label style={{ color: 'white', fontFamily: 'Quicksand, sans-serif', fontWeight: "600" }}>Source URL</Form.Label>
+              <Form.Label style={{ color: theme == "dark" ? "#FFD700":"white", fontFamily: 'Quicksand, sans-serif', fontWeight: "600" }}>Source URL</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter the URL of an image for your recipe"
@@ -219,7 +220,7 @@ const Contribute = () => {
               )}
             </Form.Group>
             <Form.Group controlId="cooking_time" className="my-2">
-              <Form.Label style={{ color: 'white', fontFamily: 'Quicksand, sans-serif', fontWeight: "600" }}>Preparation Time (minutes)</Form.Label>
+              <Form.Label style={{ color: theme == "dark" ? "#FFD700":"white", fontFamily: 'Quicksand, sans-serif', fontWeight: "600" }}>Preparation Time (minutes)</Form.Label>
               <Form.Control
                 type="number"
                 placeholder="Enter the preparation time in minutes"
@@ -230,7 +231,7 @@ const Contribute = () => {
               />
             </Form.Group>
             <Form.Group controlId="image_url" className="my-2">
-              <Form.Label style={{ color: 'white', fontFamily: 'Quicksand, sans-serif', fontWeight: "600" }}>Image URL</Form.Label>
+              <Form.Label style={{ color: theme == "dark" ? "#FFD700":"white", fontFamily: 'Quicksand, sans-serif', fontWeight: "600" }}>Image URL</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter the URL of an image for your recipe"
@@ -246,7 +247,7 @@ const Contribute = () => {
               )}
             </Form.Group>
             <Form.Group controlId="publisher" className="my-2">
-              <Form.Label style={{ color: 'white', fontFamily: 'Quicksand, sans-serif', fontWeight: "600" }}>Your Name or Publisher</Form.Label>
+              <Form.Label style={{ color: theme == "dark" ? "#FFD700":"white", fontFamily: 'Quicksand, sans-serif', fontWeight: "600" }}>Your Name or Publisher</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter your name or the name of the publisher"
@@ -276,7 +277,7 @@ const Contribute = () => {
           autohide
           style={{
             background: '#81B29A',
-            color: 'white',
+            color: theme == "dark" ? "#FFD700":"white",
           }}
         >
           <Toast.Body>Your recipe has been submitted!</Toast.Body>

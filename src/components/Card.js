@@ -7,13 +7,13 @@ import { useState } from 'react';
  const CardDeck = ({recipe}) =>{
     const dispatch = useDispatch();
     const favorites = useSelector((state) => state.favorites);
-    console.log(favorites);
+   // console.log(favorites);
     const [fav,setFav] = useState(favorites.some((favRecipe) => favRecipe.id === recipe.id));
     const toggleFavorite = (recipe) => {
         if (favorites.some((favRecipe) => favRecipe.id === recipe.id)) {
           setFav(false)
           console.log("fav is set false")
-          dispatch(removeFromFavorites(recipe));
+          dispatch(removeFromFavorites(recipe.id));
         } else {
            setFav(true)
           dispatch(addToFavorites(recipe));

@@ -5,7 +5,9 @@ import RecipeList from '../components/RecipeList';
 import FeaturedRecipes from '../components/FeaturedRecipes';
 import { FaSearch } from 'react-icons/fa'; 
 import CategoryList from '../components/CategoryList';
+import { useTheme } from '../ThemeContext';
 const Home = () => {
+  const {  theme } = useTheme();
   const [searchTerm, setSearchTerm] = useState('');
   const [recipes, setRecipes] = useState([]);
   const [cat, setCat] = useState('');
@@ -30,7 +32,7 @@ const Home = () => {
     try {
       const response = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipes?search=${searchTerm}&key=${"1e218485-8acb-4811-bd90-753ba4865533"}`);
       const data = await response.json();
-      console.log("pizza", data.data.recipes)
+      //console.log("pizza", data.data.recipes)
       setRecipes(data.data.recipes);
     } catch (error) {
       console.error('Error fetching recipes:', error);
@@ -40,7 +42,7 @@ const Home = () => {
     try {
       const response = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipes?search=${category}&key=${"1e218485-8acb-4811-bd90-753ba4865533"}`);
       const data = await response.json();
-      console.log("data",data.data.recipes[0])
+      //console.log("data",data.data.recipes[0])
       setRecipes(data.data.recipes);
     } catch (error) {
       console.error('Error fetching recipes:', error);
@@ -65,8 +67,8 @@ const Home = () => {
       <Row className="mt-2" >
         <Col className="mb-4 text-center">
           <h1 style={{color:"#E07A5F",fontFamily: 'Pacifico, sans-serif'}}>CulinaShare</h1>
-          <p style={{color:"#81B29A"}}>Discover, share, and save delicious recipes!</p>
-          <Form onSubmit={handleSubmit} inline className="d-flex rounded p-2" style={{backgroundColor:"white",border:'0.5px solid #E07A5F'}} >
+          <p style={{color: theme == "dark" ? "#FFD700":"#81B29A"}}>Discover, share, and save delicious recipes!</p>
+          <Form onSubmit={handleSubmit} inline className="d-flex rounded p-2" style={{backgroundColor:theme=="dark"?"#fff":"white",border:'0.5px solid #E07A5F'}} >
             <Form.Group controlId="searchTerm" className="mr-2" style={{width:"80rem"}}>
               <Form.Control
                 type="text"
@@ -76,14 +78,14 @@ const Home = () => {
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </Form.Group>
-            <Button  type="submit" className='ml-2' style={{backgroundColor:"white",border:"none"}} >
+            <Button  type="submit" className='ml-2' style={{backgroundColor:"#0000",border:"none"}} >
               <FaSearch color='#E07A5F'/> 
             </Button>
           </Form>
         </Col>
       </Row>
       <Row className="mt-4">
-        <Col>
+        <Col style={{ height: '300px', overflowY: 'auto' }}>
           <h2 style={{color:"#E07A5F",fontFamily: 'Quicksand, sans-serif'}}>Categories</h2>
           {categories.map((category) => (
               <CategoryList category={category} handleCategoryClick={handleCategoryClick} cat={cat}/>

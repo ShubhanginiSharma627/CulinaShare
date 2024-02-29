@@ -11,7 +11,7 @@ const FeaturedRecipes = () => {
       try {
         const response = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipes?search=${"pizza"}&key=${"1e218485-8acb-4811-bd90-753ba4865533"}`);
         const data = await response.json();
-        console.log("featured recipes", data.data.recipes);
+        //console.log("featured recipes", data.data.recipes);
         setFeaturedRecipes(data.data.recipes);
       } catch (error) {
         console.error('Error fetching featured recipes:', error);

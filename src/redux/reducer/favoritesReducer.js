@@ -7,6 +7,7 @@ const favoritesReducer = (state = initialState, action) => {
     case 'ADD_FAVORITE':
       return [...state, action.payload];
     case 'REMOVE_FAVORITE':
+       console.log("state",action.payload)
       return state.filter((recipe) => recipe.id !== action.payload);
     default:
       return state;

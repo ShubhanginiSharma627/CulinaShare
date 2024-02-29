@@ -1,11 +1,14 @@
 import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, ToggleButtonGroup, ToggleButton, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import logoImage from '../img/favicon.jpg'; // Replace with the actual path to your logo image
-
+import { useTheme } from '../ThemeContext';
+import { FaSun, FaMoon } from 'react-icons/fa';
 const NavigationBar = () => {
+  const { toggleTheme, theme } = useTheme();
+
   return (
-    <Navbar style={{backgroundColor:"#3D405B"}} expand="lg" className='px-3 fixed-top '>
+    <Navbar style={{ backgroundColor: theme === 'dark' ? '#1F2937' : '#3D405B' }} expand="lg" className='px-5 fixed-top '>
       <LinkContainer to="/">
         <div className="d-flex align-items-center justify-content-center">
         <Navbar.Brand>
@@ -36,6 +39,9 @@ const NavigationBar = () => {
             <Nav.Link>About Us</Nav.Link>
           </LinkContainer>
         </Nav>
+         <Button onClick={toggleTheme} className='ml-1 ' style={{backgroundColor:"#0000",border:"none"}}>
+           {theme === 'dark' ? <FaMoon size={20} /> : <FaSun size={20} />}
+         </Button>
       </Navbar.Collapse>
     </Navbar>
   );

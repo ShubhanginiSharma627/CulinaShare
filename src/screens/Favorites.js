@@ -2,8 +2,11 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import RecipeList from '../components/RecipeList';
+import { useTheme } from '../ThemeContext';
 
 const Favorites = () => {
+  const {  theme } = useTheme();
+  
   const favorites = useSelector((state) => state.favorites);
 
   return (
@@ -12,7 +15,7 @@ const Favorites = () => {
       {favorites.length > 0 ? (
         <RecipeList recipes={favorites} />
       ) : (
-        <p className="text-center" style={{color:"#81B29A"}}>No favorite recipes yet. Save some recipes to your favorites!</p>
+        <p className="text-center" style={{color: theme == "dark" ? "#FFD700":"#81B29A"}}>No favorite recipes yet. Save some recipes to your favorites!</p>
       )}
     </Container>
   );
