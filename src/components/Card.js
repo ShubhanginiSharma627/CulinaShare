@@ -38,7 +38,7 @@ import { useState } from 'react';
                                 </Button>
                             </div>
                             <Card.Body className="flex-grow-1">
-                                <Card.Title>{recipe.title}</Card.Title>
+                                <Card.Title style={{fontFamily: 'Quicksand, sans-serif', fontWeight: "600"}}>{recipe.title}</Card.Title>
                                 <Link to={`/recipe/${recipe.id}`}>
                                     <Button style={{backgroundColor:"#3D405B",border:"none"}}>View Recipe</Button>
                                 </Link>
