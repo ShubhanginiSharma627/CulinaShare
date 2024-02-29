@@ -12,9 +12,11 @@ const Contribute = () => {
     publisher: "",
     cooking_time: "",
     servings: "1",
+    category:"",
     ingredients: [{ quantity: '', unit: '', description: '' }],
   });
   const [nameError, setNameError] = useState('');
+  const [CatError, setCatError] = useState('');
   const [showToast, setShowToast] = useState(false);
   const [imgUrlError, setImgUrlError] = useState('');
   const [urlError, setUrlError] = useState('');
@@ -72,6 +74,10 @@ const Contribute = () => {
       setUrlError('Please enter a valid URL')
       submit = false;
     }
+    if (recipeData.category.length<=3){
+      setCatError("Please Enetr Vaild Category")
+      submit = false;
+    }
     if(submit){
       try {
         const apiKey = 'e2ff61de-9e0d-463c-aa00-e29a5e986519'; // Replace 'your-api-key' with your actual API key
@@ -94,6 +100,7 @@ const Contribute = () => {
             publisher: "",
             cooking_time: "",
             servings: "1",
+            category:"",
             ingredients: [{ quantity: '', unit: '', description: '' }]
           })
         } else {
@@ -117,6 +124,7 @@ const Contribute = () => {
           publisher: "",
           cooking_time: "",
           servings: "1",
+          category:"",
           ingredients: [{ quantity: '', unit: '', description: '' }]
         })
       }
@@ -203,7 +211,7 @@ const Contribute = () => {
                 </Button>
               </OverlayTrigger>
             </Form.Group>
-            <Form.Group controlId="instructions" className="my-2">
+            <Form.Group controlId="source_url" className="my-2">
               <Form.Label style={{ color: theme == "dark" ? "#FFD700":"white", fontFamily: 'Quicksand, sans-serif', fontWeight: "600" }}>Source URL</Form.Label>
               <Form.Control
                 type="text"
@@ -216,6 +224,22 @@ const Contribute = () => {
               {urlError && (
                 <Form.Text className="text-danger">
                   {urlError}
+                </Form.Text>
+              )}
+            </Form.Group>
+            <Form.Group controlId="category" className="my-2">
+              <Form.Label style={{ color: theme == "dark" ? "#FFD700":"white", fontFamily: 'Quicksand, sans-serif', fontWeight: "600" }}>Recipe Category</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter the Category of your recipe"
+                name="category"
+                value={recipeData.category}
+                onChange={handleInputChange}
+                required
+              />
+              {CatError && (
+                <Form.Text className="text-danger">
+                  {CatError}
                 </Form.Text>
               )}
             </Form.Group>
