@@ -8,6 +8,7 @@ CulinaShare is a web application that allows users to contribute and share their
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Usage](#usage)
+- [Themes](#themes)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -17,6 +18,7 @@ CulinaShare is a web application that allows users to contribute and share their
 - User-friendly form with real-time validation.
 - Responsive design for a seamless experience on different devices.
 - Sticky navigation bar for easy navigation.
+- Day and night themes for a personalized experience.
 
 ## Getting Started
 
@@ -56,6 +58,10 @@ Make sure you have the following software installed on your machine:
    ```
 
 2. Open your browser and navigate to [http://localhost:3000](http://localhost:3000) to view CulinaShare.
+
+## Themes
+
+CulinaShare provides a personalized experience with two themes: day and night. You can switch between these themes in the navigation bar.
 
 ## Contributing
 
