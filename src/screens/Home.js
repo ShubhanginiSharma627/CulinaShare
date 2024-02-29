@@ -85,8 +85,8 @@ const Home = () => {
         </Col>
       </Row>
       <Row className="mt-4">
+      <h2 style={{color:"#E07A5F",fontFamily: 'Quicksand, sans-serif'}}>Categories</h2>
         <Col style={{ height: '300px', overflowY: 'auto' }}>
-          <h2 style={{color:"#E07A5F",fontFamily: 'Quicksand, sans-serif'}}>Categories</h2>
           {categories.map((category) => (
               <CategoryList category={category} handleCategoryClick={handleCategoryClick} cat={cat}/>
             ))}
