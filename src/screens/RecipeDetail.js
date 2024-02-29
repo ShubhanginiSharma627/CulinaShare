@@ -19,6 +19,7 @@ const RecipeDetail = () => {
         const response = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipes/${id}?key=${"1e218485-8acb-4811-bd90-753ba4865533"}`);
         const data = await response.json();
         setRecipe(data.data.recipe);
+        console.log("data",data.data)
       } catch (error) {
         console.error('Error fetching recipe details:', error);
       }
@@ -65,6 +66,8 @@ const RecipeDetail = () => {
               target="_blank"
               rel="noopener noreferrer"
             >{recipe.source_url}</a></p>
+
+            <p>{recipe.description}</p>
           </Col>
           <Col md={4}>
             <Card>
@@ -73,7 +76,7 @@ const RecipeDetail = () => {
                 <ListGroup variant="flush">
                   {recipe.ingredients.map((ingredient, index) => (
                     <ListGroup.Item key={index}>
-                      {`${ingredient.quantity == null ? "1" : ingredient.quantity} ${ingredient.unit} ${ingredient.description}`}
+                      {`${ingredient.quantity == null ? "" : ingredient.quantity} ${ingredient.unit} ${ingredient.description}`}
                     </ListGroup.Item>
                   ))}
                 </ListGroup>
