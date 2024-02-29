@@ -5,7 +5,7 @@ import { useTheme } from '../ThemeContext';
 const AboutUs = () => {
   const {  theme } = useTheme();
   return (
-    <Container className="mt-5 pt-5" style={{minHeight:"42.8rem"}}>
+    <Container className="mt-5 pt-5" style={{minHeight:"44.8rem"}}>
       <Row className="mt-5 ">
         <Col md={7}>
           <h1 className="my-4" style={{color:"#E07A5F",fontFamily: 'Quicksand, sans-serif'}}>About CulinaShare</h1>

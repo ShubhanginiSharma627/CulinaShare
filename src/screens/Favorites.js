@@ -10,7 +10,7 @@ const Favorites = () => {
   const favorites = useSelector((state) => state.favorites);
 
   return (
-    <Container className="mt-5 pt-5" style={{minHeight:"43.8rem"}}>
+    <Container className="mt-5 pt-5" style={{minHeight:"44.8rem"}}>
       <h1 className="my-5 text-center" style={{ color: '#E07A5F', fontFamily: 'Quicksand, sans-serif' }}>My Favorite Recipes</h1>
       {favorites.length > 0 ? (
         <RecipeList recipes={favorites} />
